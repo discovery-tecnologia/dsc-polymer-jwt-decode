@@ -1,0 +1,102 @@
+<link rel="import" href="../polymer/polymer.html">
+
+<!--
+`dsc-polymer-jwt-decode`
+Decode payload of JWT token
+
+@demo demo/index.html
+-->
+
+<dom-module id="dsc-polymer-jwt-decode">
+
+  <script>
+    Polymer({
+
+      is: 'dsc-polymer-jwt-decode',
+
+      properties: {
+
+        /**
+         * JWT token to parse.
+         */
+        token: {
+          type: String,
+          notify: true
+        },
+
+        /**
+         * Bind decoded payload token result.
+         */
+        decodedToken: {
+          type: Object,
+          notify: true,
+          computed: '_decodeToken(token)',
+        },
+
+        valid: {
+          type: Boolean,
+          notify: true,
+          computed: '_isValid(decodedToken)',
+        },
+
+      },
+
+      /**
+       * Decode payload of JWT token as object.
+       */
+      _decodeToken: function (token) {
+        if (token === undefined || token === null) {
+          return undefined;
+        }
+        var parts = token.split('.');
+        if (parts.length !== 3) {
+          return undefined;
+        }
+        var decoded = this._urlBase64Decode(parts[1]);
+        if (!decoded) {
+          return undefined;
+        }
+        var decodedObj = JSON.parse(decoded);
+        return decodedObj;
+      },
+
+      _isValid: function (decodedToken) {
+        if (!decodedToken) {
+          return false;
+        }
+        if (!decodedToken.exp) {
+          return false;
+        }
+        return true;
+      },
+
+      /**
+       * Decode URL base64
+       */
+      _urlBase64Decode: function (str) {
+        var output = str.replace(/-/g, '+').replace(/_/g, '/');
+        switch (output.length % 4) {
+          case 0:
+          {
+            break;
+          }
+          case 2:
+          {
+            output += '==';
+            break;
+          }
+          case 3:
+          {
+            output += '=';
+            break;
+          }
+          default:
+          {
+            throw 'Illegal base64url string!';
+          }
+        }
+        return decodeURIComponent(encodeURI(window.atob(output))); //polifyll https://github.com/davidchambers/Base64.js
+      }
+    });
+  </script>
+</dom-module>

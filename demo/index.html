@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+    <title>dsc-polymer-jwt-decode demo</title>
+
+    <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+
+    <link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html">
+    <link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
+    <link rel="import" href="../dsc-polymer-jwt-decode.html">
+    <link rel="import" href="demo-bind-result.html">
+
+    <style is="custom-style" include="demo-pages-shared-styles">
+    </style>
+  </head>
+  <body>
+    <div class="vertical-section-container centered">
+      <h3>Basic dsc-polymer-jwt-decode demo</h3>
+      <demo-snippet>
+        <template>
+          <dsc-polymer-jwt-decode
+            id="jwtDecode"
+            token="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhcGktYXV0aCIsImlhdCI6MTQ5MjU2NzQzMywiZXhwIjoxNDkyNTc0NjYzLCJ1c2VyIjoiNThhYjg4MGIzYmY5MDQ0ODZmYjI4Yzk2IiwicHJpdmlsZWdlcyI6WyJhZG1pbiJdfQ.2XxAiWNdLC-aA9L_L5MmVmUlqmj9_ox0sJU8byhw1F8"
+            valid="{{isValid}}"
+            decoded-token='{{tokenPayload}}'></dsc-polymer-jwt-decode>
+        </template>
+      </demo-snippet>
+    </div>
+  </body>
+</html>
