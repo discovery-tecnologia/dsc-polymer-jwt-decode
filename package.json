@@ -1,5 +1,5 @@
 {
-  "name": "dsc-polymer-parallax",
+  "name": "dsc-polymer-jwt decode",
   "license": "MIT",
   "devDependencies": {
     "bower": "latest",
