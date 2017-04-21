@@ -9,9 +9,14 @@
   "rules": {
     "no-var": "off",
     "new-cap": ["error", { "capIsNewExceptions": ["Polymer"] }],
-    "max-len": ["error", 120]
+    "max-len": ["error", 120],
+    "no-console": "off"
   },
   "globals": {
-    "Polymer": true
+    "Polymer": true,
+    "suite": true,
+    "test": true,
+    "fixture": true,
+    "assert": true
   }
 }

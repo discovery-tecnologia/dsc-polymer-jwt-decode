@@ -21,7 +21,7 @@ Decode payload of JWT token
          */
         token: {
           type: String,
-          notify: true
+          notify: true,
         },
 
         /**
@@ -43,8 +43,12 @@ Decode payload of JWT token
 
       /**
        * Decode payload of JWT token as object.
+       *
+       * @param {String} token JWT token.
+       *
+       * @return {Object} Decoded token payload.
        */
-      _decodeToken: function (token) {
+      _decodeToken: function(token) {
         if (token === undefined || token === null) {
           return undefined;
         }
@@ -60,7 +64,14 @@ Decode payload of JWT token
         return decodedObj;
       },
 
-      _isValid: function (decodedToken) {
+      /**
+       * Virify if valid token.
+       *
+       * @param {Object} decodedToken Payload token.
+       *
+       * @return {Boolean} Validation status.
+       */
+      _isValid: function(decodedToken) {
         if (!decodedToken) {
           return false;
         }
@@ -71,9 +82,13 @@ Decode payload of JWT token
       },
 
       /**
-       * Decode URL base64
+       * Decode URL base64.
+       *
+       * @param {String} str Base64 string to decode.
+       *
+       * @return {Sreing} Decoded string.
        */
-      _urlBase64Decode: function (str) {
+      _urlBase64Decode: function(str) {
         var output = str.replace(/-/g, '+').replace(/_/g, '/');
         switch (output.length % 4) {
           case 0:
@@ -92,11 +107,13 @@ Decode payload of JWT token
           }
           default:
           {
-            throw 'Illegal base64url string!';
+            console.error('Illegal base64url string!');
           }
         }
-        return decodeURIComponent(encodeURI(window.atob(output))); //polifyll https://github.com/davidchambers/Base64.js
-      }
+        // polifyll https://github.com/davidchambers/Base64.js
+        return decodeURIComponent(encodeURI(window.atob(output)));
+      },
+
     });
   </script>
 </dom-module>
