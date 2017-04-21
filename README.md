@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/discovery-tecnologia/dsc-polymer-jwt-decode.svg?branch=master)](http://travis-ci.org/#!/discovery-tecnologia/dsc-polymer-jwt-decode)
 ![Bower version](https://img.shields.io/bower/v/dsc-polymer-jwt-decode.svg)
-![](https://img.shields.io/pypi/l/Django.svg)
+![](https://img.shields.io/github/license/mashape/apistatus.svg)
 
 Decode payload of JWT token
 
